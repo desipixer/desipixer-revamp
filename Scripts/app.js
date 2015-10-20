@@ -3,8 +3,8 @@
 
 
 app.config(function ($routeProvider) {
-    $routeProvider.when('/content/:messageId', {
-        controller: 'messageCtrl',
+    $routeProvider.when('/content/:postID', {
+        controller: 'postCtrl',
         templateUrl: 'Pages/post.html'
     }).
     otherwise({

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <title>DP Portal</title>
+
+  <link rel="shortcut icon" href="Images/icon.png" type="image/x-icon"> 
+
+  <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+
+  <script src="https://code.angularjs.org/1.2.18/angular-route.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="Scripts/app.js"></script>
+  <script src="Scripts/blogservice.js"></script>
+  <script src="Scripts/imgservice.js"></script>
+  <script src="Scripts/service.js"></script>
+  <script src="Scripts/controller.js"></script>
+
+  <style>
+   img {
+     height : 320px;
+     width : 250px;
+   }
+ </style>
+</head>
+<body>
+  <div ng-controller="homeCtrl">
+
+   <table class="table table-condensed">
+     <tr>
+       <td>
+        <a href="/main.html" ><button class="btn btn-info"> HOME </button> </a>
+      </td>
+      <td>
+       <select ng-model="selectedSite" ng-options="blog.blogId as blog.blogURL for blog in blogList" ng-init="selectedSite = blogList[0]" ng-change="siteChanged()"></select>
+     </td>
+     <td>
+      Filter : <input ng-model="filterText" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input ng-model="testModel" />
+      <button class="btn btn-primary" ng-click="getURL()"> GET </button>
+    </td>
+    <td>
+      
+    </td>
+    <td>
+      
+    </td>
+  </tr>
+</table>
+<div ng-hide="isActive('')">
+  <span ng-repeat="entry in feeds | filter : filterText" >
+    <a ng-href="#content/{{entry.id}}">    <img ng-src="{{entry.thumbs[0]}}" title="{{entry.title}}" /></a>
+  </span>
+</div>
+</div>
+
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
+<div ng-view>
+
+</body>
+</html>

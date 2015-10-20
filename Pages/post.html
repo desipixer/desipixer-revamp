@@ -1,9 +1,18 @@
 ﻿<div>
     <select ng-model="selectPostBlog" ng-change="selectedBlog()" ng-options="blog.blogId as blog.blogURL for blog in postBlogs">	</select>
-    <button ng-click="postFunction()" class="btn btn-success"> POST </button><h4> {{ postTitle}}</h4>
-    <button ng-click="shareFBDialog()" class="btn btn-primary"> Facebook </button>
-    <button ng-click="shareGoogleDialog()" class="btn btn-danger"> Google+ </button>
-    <button ng-click="shareFlipboardDialog()" class="btn btn-danger"> Flipboard </button>
+    <button ng-click="postFunction()" class="btn btn-success"> POST </button>
+    <div>
+    	<h4> {{ title }}</h4>
+	    <img src="Icons/facebook.png" class="icon-share" onmouseover="this.style.cursor='pointer'" ng-click="shareFBDialog()" />
+	     <img src="Icons/googleplus.png" class="icon-share" onmouseover="this.style.cursor='pointer'" ng-click="shareGoogleDialog()" />
+	      <img src="Icons/flipboard.png" class="icon-share" onmouseover="this.style.cursor='pointer'" ng-click="shareFlipboardDialog()" />
+	    <style>
+	    .icon-share {
+	    	height: 64px;
+	    	width : 64px;
+	    }
+	    </style>
+    </div>
    
 </div>
 <div ng-bind-html="renderHtml(body)">
